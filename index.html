@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dynamic Study Companion</title>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body class="p-4 sm:p-8 min-h-screen flex justify-center items-start">
+        <div
+            class="container w-full bg-white rounded-xl p-6 md:p-10 shadow-lg-custom transition-all duration-300"
+        >
+            <h1 class="text-3xl font-extrabold mb-2 text-indigo-700">
+                Dynamic Study Companion
+            </h1>
+            <p class="text-gray-500 mb-8">
+                Paste your notes or reading material below. Select a format to
+                generate a study aid.
+            </p>
+
+            <!-- Input Area -->
+            <div class="mb-6">
+                <label
+                    for="notes-input"
+                    class="block text-lg font-medium text-gray-700 mb-2"
+                    >Your Study Material (Notes, Text, etc.)</label
+                >
+                <textarea
+                    id="notes-input"
+                    rows="8"
+                    class="w-full p-4 border-2 border-indigo-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                    placeholder="E.g., The kinetic theory of gases states that gas particles are in constant, random motion and collisions between them are perfectly elastic. Temperature is proportional to the average kinetic energy of the particles."
+                ></textarea>
+            </div>
+
+            <!-- Mode Selector and Button -->
+            <div
+                class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+                <div class="flex-grow">
+                    <label
+                        for="mode-select"
+                        class="block text-lg font-medium text-gray-700 mb-2"
+                        >Select Study Aid Type</label
+                    >
+                    <select
+                        id="mode-select"
+                        class="w-full sm:w-60 p-3 border-2 border-indigo-200 bg-white rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+                        <option value="flashcards">Flashcards (Q & A)</option>
+                        <option value="quiz">
+                            Quiz (Multiple Choice/Short Answer)
+                        </option>
+                        <option value="summary">Summary (Key Points)</option>
+                    </select>
+                </div>
+                <button
+                    id="generate-button"
+                    class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition-colors duration-200 disabled:opacity-50 flex items-center justify-center"
+                >
+                    <span id="button-text">Generate Aid</span>
+                    <svg
+                        id="loading-spinner"
+                        class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <circle
+                            class="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="4"
+                        ></circle>
+                        <path
+                            class="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Output Area -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">
+                    Generated Study Aid
+                </h2>
+                <div
+                    id="output-area"
+                    class="min-h-[250px] w-full p-4 border border-gray-300 bg-gray-50 rounded-lg overflow-y-auto text-sm whitespace-pre-wrap"
+                >
+                    Your generated flashcards, quiz, or summary will appear
+                    here.
+                </div>
+                <div
+                    id="citation-area"
+                    class="mt-4 text-xs text-gray-500 hidden"
+                >
+                    <p class="font-semibold mb-1">Sources:</p>
+                    <ul id="sources-list" class="list-disc ml-4"></ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="script.js"></script>
+    </body>
+</html>
